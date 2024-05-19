@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "60eaac0f-1ab0-423b-8274-ec5be4fd2b1e",
+		"name": "Project#1 SOAP API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19467347"
+	},
+	"item": [
+		{
+			"name": "TC2# NegativeTC-No Header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <NumberToWords xmlns=\"http://www.dataaccess.com/webservicesserver/\">\r\n      <ubiNum>103</ubiNum>\r\n    </NumberToWords>\r\n  </soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.dataaccess.com/webservicesserver/NumberConversion.wso",
+					"protocol": "https",
+					"host": [
+						"www",
+						"dataaccess",
+						"com"
+					],
+					"path": [
+						"webservicesserver",
+						"NumberConversion.wso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC2# NegativeTC-No Body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500 for the no body\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"url": {
+					"raw": "https://www.dataaccess.com/webservicesserver/NumberConversion.wso",
+					"protocol": "https",
+					"host": [
+						"www",
+						"dataaccess",
+						"com"
+					],
+					"path": [
+						"webservicesserver",
+						"NumberConversion.wso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC1# PositiveTC-SOAP Req NumbertoWords Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <NumberToWords xmlns=\"http://www.dataaccess.com/webservicesserver/\">\r\n      <ubiNum>103</ubiNum>\r\n    </NumberToWords>\r\n  </soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.dataaccess.com/webservicesserver/NumberConversion.wso",
+					"protocol": "https",
+					"host": [
+						"www",
+						"dataaccess",
+						"com"
+					],
+					"path": [
+						"webservicesserver",
+						"NumberConversion.wso"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
