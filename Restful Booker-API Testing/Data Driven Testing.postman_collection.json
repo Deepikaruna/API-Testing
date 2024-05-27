@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "1059a7d6-a824-448c-beb6-66f0a463fefa",
+		"name": "Data Driven Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19467347"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData).to.have.property('email');\r",
+							"  pm.expect(responseData).to.have.property('password');\r",
+							"  pm.expect(responseData).to.have.property('id');\r",
+							"  pm.expect(responseData).to.have.property('createdAt');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Email is in a valid email format\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Password is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.password).to.be.a('string').and.to.have.lengthOf.at.least(0, \"Password should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is within an acceptable range\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(359);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"{{username}}\",\r\n    \"password\" : \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register/preprod",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register",
+						"preprod"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
